@@ -13,8 +13,7 @@ const data = [
 
 
 
-function renderArticle(event) {
-    event.preventDefault();
+function renderArticle() {
   sectionAnimes.innerHTML += `<article class="article">
 <img src="https://cdn.myanimelist.net/images/anime/5/17407.jpg?s=2bf24a22a339223dcadb1cdfc3307b61" class="card__img" alt="Animes">
 <button class="card__btn" title="Añadir a favoritos">Añadir a favoritos</button></article>`;
@@ -22,4 +21,4 @@ function renderArticle(event) {
 
 
 sectionAnimes.innerHTML = "";
-renderArticle();
+/*renderArticle();*/
