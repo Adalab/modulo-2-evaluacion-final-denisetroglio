@@ -4,11 +4,15 @@ const sectionAnimes = document.querySelector(".js_animes");
 const searchInput = document.querySelector(".js_search");
 const buttonSearch = document.querySelector(".js_button");
 const listAnimeResults = document.querySelector(".js_results");
+const listFav = document.querySelector(".js_fav");
+const resetBtn = document.querySelector(".js_reset");
+
 
 let results = [];
 
 let fav = [];
 
+/* al hacer una busqueda*/
 function handleSearchInput(event) {
   event.preventDefault();
 }
@@ -23,16 +27,39 @@ if(searchInput.value.lenght >= 4) {
 
 function renderArticle(dataResults) {
   console.log({ dataResults });
-  sectionAnimes.innerHTML += `<li class="list_animes js_listresults">
+  listAnimeResults.innerHTML += `<li class="list_animes js_listresults">
 <img src="${dataResults.image_url}" class="card__img" alt="Animes">
 <h2 class="title_anime">"${dataResults.title}"</h2></li>`;
 }
 
 function renderAllResults() {
-  sectionAnimes.innerHTML = "";
+  listAnimeResults.innerHTML = "";
   for (let i = 0; i < results.lenght; i++) {
     renderArticle(results[i]);
   }
 }
 
-searchInput.addEventListener("keyup", handleSearchInput);
+/*Boton de buscar*/
+function handleClickSearch(){
+    for(eachClick of buttonSearch){    
+      listAnimeResults.innerHTML = "";  
+  }
+}
+
+/*Añadir a favoritos*/
+
+
+
+/*Boton reset*/
+function handleClickReset(){
+for(eachClick of resetBtn){
+  listAnimeResults.innerHTML = "";  
+  listFav.innerHTML="";
+}
+}
+
+
+
+searchInput.addEventListener("keyup", handleSearchInput); /*input - pesquisa animes*/
+buttonSearch.addEventListener("click", handleClickSearch); /*boton de buscar*/
+resetBtn.addEventListener("click", handleClickReset); /*boton reset*/
