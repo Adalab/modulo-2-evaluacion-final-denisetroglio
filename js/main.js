@@ -7,7 +7,6 @@ const listAnimeResults = document.querySelector(".js_results");
 const listFav = document.querySelector(".js_fav");
 const resetBtn = document.querySelector(".js_reset");
 
-
 let results = [];
 
 let fav = [];
@@ -16,7 +15,7 @@ let fav = [];
 function handleClickSearch(event) {
   event.preventDefault();
 }
-if(searchInput.value.lenght >= 4) {
+if (searchInput.value.lenght >= 4) {
   fetch("https://api.jikan.moe/v3/search/anime?q=naruto")
     .then((response) => response.json())
     .then((dataFromAPI) => {
@@ -39,22 +38,16 @@ function renderArticle(dataResults) {
 <h2 class="title_anime">"${dataResults.title}"</h2></li>`;
 }
 
-
-
 /*Añadir a favoritos*/
 
-
-
 /*Boton reset*/
-function handleClickReset(){
-for(eachClick of resetBtn){
-  listAnimeResults.innerHTML = "";  
-  listFav.innerHTML="";
+function handleClickReset() {
+  for (eachClick of resetBtn) {
+    listAnimeResults.innerHTML = "";
+    listFav.innerHTML = "";
+  }resetAllResults();
 }
-}
-
-
 
 /*searchInput.addEventListener("keyup", handleSearchInput); */
 buttonSearch.addEventListener("click", handleClickSearch); /*boton de buscar*/
-resetBtn.addEventListener("click", handleClickReset); /*boton reset*/
+resetBtn.addEventListener("reset", handleClickReset); /*boton reset*/
