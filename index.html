@@ -15,25 +15,41 @@
 <body>
     <main class="main">
         <h1 class="title">Buscador de series de anime</h1>
-        <div class="div">
+        <section class="div">
             <form>
                 <label for="anime"></label>
-                <input class="search" type="text" id="anime" name="searchanime" placeholder="Busque aquí tu anime...">
-                <button class="button">Buscar</button>
+                <input class="search js_search" type="text" id="anime" name="searchanime" required minlength="4"
+                    placeholder="Busque aquí tu anime...">
+                <button class="button js_button">Buscar</button>
+                <button class="reset js_reset">Reset</button>
             </form>
-        </div>
-
-        <div class="data">
-            <p class="fav">Favoritos:</p>
-            <p class="results">Resultados:</p>
-        </div>
-
-        <section class="section js_animes">
-
-
-
         </section>
 
+        <div class="data">
+            <aside class="aside">
+                <h2 class="fav">Favoritos:</h2>
+                <ul class="list1 js_fav">
+                    <!--<li class="list_animesfav js_fav">
+                        <img src="https://cdn.myanimelist.net/images/anime/5/17407.jpg?s=2bf24a22a339223dcadb1cdfc3307b61" class="card__img" alt="Animes">
+                        <h2 class="title_anime">Naruto: Shippuuden</h2></li>-->
+
+
+                </ul>
+            </aside>
+
+
+            <section class="section js_animes">
+                <h2 class="results">Resultados:</h2>
+                <ul class="list2 js_results">
+                    <!--<li class="list_animes js_listresults">
+                        <img src="https://cdn.myanimelist.net/images/anime/5/17407.jpg?s=2bf24a22a339223dcadb1cdfc3307b61" class="card__img" alt="Animes">
+                        <h2 class="title_anime">Naruto: Shippuuden</h2></li>-->
+                </ul>
+
+
+
+            </section>
+        </div>
     </main>
     <script src="js/main.js"></script>
 

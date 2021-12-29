@@ -1,24 +1,38 @@
 "use strict";
 
 const sectionAnimes = document.querySelector(".js_animes");
+const searchInput = document.querySelector(".js_search");
+const buttonSearch = document.querySelector(".js_button");
+const listAnimeResults = document.querySelector(".js_results");
 
-fetch("https://api.jikan.moe/v3/search/anime?q=naruto")
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+let results = [];
 
-const data = [
+let fav = [];
 
-];
-
-
-
-
-function renderArticle() {
-  sectionAnimes.innerHTML += `<article class="article">
-<img src="https://cdn.myanimelist.net/images/anime/5/17407.jpg?s=2bf24a22a339223dcadb1cdfc3307b61" class="card__img" alt="Animes">
-<button class="card__btn" title="Añadir a favoritos">Añadir a favoritos</button></article>`;
+function handleSearchInput(event) {
+  event.preventDefault();
+}
+if(searchInput.value.lenght >= 4) {
+  fetch("https://api.jikan.moe/v3/search/anime?q=naruto")
+    .then((response) => response.json())
+    .then((dataFromAPI) => {
+      results = dataFromAPI.mal_id.image_url;
+      renderAllResults();
+    });
 }
 
+function renderArticle(dataResults) {
+  console.log({ dataResults });
+  sectionAnimes.innerHTML += `<li class="list_animes js_listresults">
+<img src="${dataResults.image_url}" class="card__img" alt="Animes">
+<h2 class="title_anime">"${dataResults.title}"</h2></li>`;
+}
 
-sectionAnimes.innerHTML = "";
-/*renderArticle();*/
+function renderAllResults() {
+  sectionAnimes.innerHTML = "";
+  for (let i = 0; i < results.lenght; i++) {
+    renderArticle(results[i]);
+  }
+}
+
+searchInput.addEventListener("keyup", handleSearchInput);
