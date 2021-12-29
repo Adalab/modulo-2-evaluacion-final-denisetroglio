@@ -12,8 +12,8 @@ let results = [];
 
 let fav = [];
 
-/* al hacer una busqueda*/
-function handleSearchInput(event) {
+// al hacer click en buscar Anime:
+function handleClickSearch(event) {
   event.preventDefault();
 }
 if(searchInput.value.lenght >= 4) {
@@ -25,13 +25,6 @@ if(searchInput.value.lenght >= 4) {
     });
 }
 
-function renderArticle(dataResults) {
-  console.log({ dataResults });
-  listAnimeResults.innerHTML += `<li class="list_animes js_listresults">
-<img src="${dataResults.image_url}" class="card__img" alt="Animes">
-<h2 class="title_anime">"${dataResults.title}"</h2></li>`;
-}
-
 function renderAllResults() {
   listAnimeResults.innerHTML = "";
   for (let i = 0; i < results.lenght; i++) {
@@ -39,12 +32,14 @@ function renderAllResults() {
   }
 }
 
-/*Boton de buscar*/
-function handleClickSearch(){
-    for(eachClick of buttonSearch){    
-      listAnimeResults.innerHTML = "";  
-  }
+//función para pintar los resulados:
+function renderArticle(dataResults) {
+  listAnimeResults.innerHTML += `<li class="list_animes js_listresults">
+<img src="${dataResults.image_url}" class="card__img" alt="Animes">
+<h2 class="title_anime">"${dataResults.title}"</h2></li>`;
 }
+
+
 
 /*Añadir a favoritos*/
 
@@ -60,6 +55,6 @@ for(eachClick of resetBtn){
 
 
 
-searchInput.addEventListener("keyup", handleSearchInput); /*input - pesquisa animes*/
+/*searchInput.addEventListener("keyup", handleSearchInput); */
 buttonSearch.addEventListener("click", handleClickSearch); /*boton de buscar*/
 resetBtn.addEventListener("click", handleClickReset); /*boton reset*/
