@@ -1,53 +1,61 @@
 "use strict";
 
-const sectionAnimes = document.querySelector(".js_animes");
-const searchInput = document.querySelector(".js_search");
-const buttonSearch = document.querySelector(".js_button");
-const listAnimeResults = document.querySelector(".js_results");
-const listFav = document.querySelector(".js_fav");
+const animesElement = document.querySelector(".js_results");
 const resetBtn = document.querySelector(".js_reset");
+const listFav = document.querySelector(".js_fav");
+const buttonSearch = document.querySelector(".js_button");
 
-let results = [];
+let animes = [];
 
-let fav = [];
-
-// al hacer click en buscar Anime:
-function handleClickSearch(event) {
-  event.preventDefault();
-}
-if (searchInput.value.lenght >= 4) {
+// Get data from API:
+const getApiData = () => {
   fetch("https://api.jikan.moe/v3/search/anime?q=naruto")
     .then((response) => response.json())
-    .then((dataFromAPI) => {
-      results = dataFromAPI.mal_id.image_url;
-      renderAllResults();
+    .then((data) => {
+      animes = data.results;
+      paintAnimes();
     });
-}
+};
 
-function renderAllResults() {
-  listAnimeResults.innerHTML = "";
-  for (let i = 0; i < results.lenght; i++) {
-    renderArticle(results[i]);
+//pintar animes:
+
+const getAnimes = anime => {
+  let animeHtmlCode = "";
+  animeHtmlCode += `<li class="list_animes js_listresults">`;
+  animeHtmlCode += `<img src="${anime.image_url}"  id=${anime.mal_id} class="card__img" alt="animes">`
+  animeHtmlCode += `<h2 class="title_anime">${anime.title}</h2></li>`;
+return animeHtmlCode;
+};
+
+const paintAnimes = () => {
+  let animesCode = "";
+  for (const anime of animes) {
+    animesCode += getAnimes(anime);
   }
-}
+  animesElement.innerHTML = animesCode;
+};
 
-//función para pintar los resulados:
-function renderArticle(dataResults) {
-  listAnimeResults.innerHTML += `<li class="list_animes js_listresults">
-<img src="${dataResults.image_url}" class="card__img" alt="Animes">
-<h2 class="title_anime">"${dataResults.title}"</h2></li>`;
-}
+//Start app:
+getApiData();
 
-/*Añadir a favoritos*/
+
+
+
+
+
+//Añadir a favoritos:
+
+
+
 
 /*Boton reset*/
 function handleClickReset() {
   for (eachClick of resetBtn) {
     listAnimeResults.innerHTML = "";
     listFav.innerHTML = "";
-  }resetAllResults();
+  }
+  resetAllResults();
 }
 
-/*searchInput.addEventListener("keyup", handleSearchInput); */
-buttonSearch.addEventListener("click", handleClickSearch); /*boton de buscar*/
-resetBtn.addEventListener("reset", handleClickReset); /*boton reset*/
+//Eventos:
+resetBtn.addEventListener("reset", handleClickReset); // Boton reset
