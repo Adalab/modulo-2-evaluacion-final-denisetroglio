@@ -4,39 +4,45 @@
   box-sizing: border-box;
 }
 
-.main {
+.header {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
   justify-content: center;
-  align-items: center;
+  flex-direction: row;
+}
+
+.main {
   width: 100%;
   height: 100vh;
-  /*background: linear-gradient(to bottom, #00196d, black);*/
   background-image: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .title {
   text-shadow: 2px 2px 2px #fab133;
   color: #9a0005;
-  font-size: 24px;
+  font-size: 34px;
   text-transform: capitalize;
   letter-spacing: 1.4px;
-  margin: 10px;
+  margin: 30px;
   width: 100%;
   font-family: "Bangers", cursive;
   text-align: center;
+  position: absolute;
 }
 
-.div {
+.section {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  transform: translateY(-150px);
   width: 100%;
+  position: absolute;
+  margin: 80px;
 }
 
 .search {
@@ -44,81 +50,78 @@
   font-family: "Bangers", cursive;
   font-size: 14px;
   color: silver;
-  width: 160px;
-  height: 20px;
+  width: 300px;
+  height: 30px;
   text-align: left;
 }
 
 .button {
   font-family: "Bangers", cursive;
-  font-size: 14px;
+  font-size: 16px;
   color: #9a0005;
   background-color: #fab133;
-  width: 50px;
-  height: 20px;
+  width: 60px;
+  height: 30px;
   text-align: center;
   box-shadow: 4px 4px 10px white;
+  cursor: pointer;
 }
 
 .reset {
   font-family: "Bangers", cursive;
-  font-size: 14px;
+  font-size: 16px;
   color: #9a0005;
   background-color: #fab133;
-  width: 50px;
-  height: 20px;
+  width: 60px;
+  height: 30px;
   text-align: center;
   margin: 10px;
   box-shadow: 4px 4px 10px white;
+  cursor: pointer;
 }
 
-.data{
+.data {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  transform: translateY(-340px);
-  width: 100%;
-}
-
-.sec2 {
-  margin: 10px;
+  transform: translateY(130px);
 }
 
 .fav {
   font-family: "Bangers", cursive;
-  font-size: 16px;
+  font-size: 24px;
   color: #fab133;
   text-shadow: 2px 2px 2px #9a0005;
-  margin: 50px;
-  display: flex;
-  letter-spacing: 1.4px;
+  margin: 15px;
+  letter-spacing: 1.7px;
+  text-align: center;
 }
 
 .results {
   font-family: "Bangers", cursive;
-  font-size: 16px;
+  font-size: 24px;
   color: #fab133;
   text-shadow: 2px 2px 2px #9a0005;
-  margin: 50px;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.7px;
+  margin: 15px;
+  text-align: center;
 }
 
 .title_anime {
   font-family: "Anton", sans-serif;
   font-size: 10px;
-  text-align:justify;
+  text-align: justify;
   color: #fab133;
   text-shadow: 2px 2px 2px #9a0005;
   word-break: break-word;
 }
 
-.card__img {
-  width: 20%;
-  height: 50%;
-  object-fit: contain;
+.card__imgres {
+  width: 60%;
+  height: 100%;
 }
 
-.list_animes{
+.list_animes {
   list-style-type: none;
   width: 100%;
   display: flex;
@@ -126,8 +129,7 @@
   margin: 10px;
 }
 
-
-.list_animesfav{
+.list_animesfav {
   list-style-type: none;
   width: 100%;
   display: flex;
@@ -139,17 +141,33 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 30px;
 }
 
-.hidden{
-  display: none;
-}
-
-.list_1 {
-  list-style-type: none;
+.list1 {
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 30px;
+}
+
+.delete {
+  font-family: "Anton", sans-serif;
+  color: #fab133;
+  font-size: 12px;
+  background-color: #9a0005;
+  width: 20px;
+  height: 20px;
+  border-radius: 40px;
+  text-align: center;
+  border: solid #fab133;
+  margin: 0 15px 0 15px;
+  cursor: pointer;
+}
+
+.card__imgfav {
+  width: 60%;
+  height: 100%;
+  object-fit: contain;
+  border: solid 4px #9a0005;
 }
