@@ -5,15 +5,8 @@ const userValue = document.querySelector(".js_search");
 const resetBtn = document.querySelector(".js_reset");
 const listFav = document.querySelector(".js_fav");
 const buttonSearch = document.querySelector(".js_button");
-const buttonX = document.querySelector(".js_deletefav");
 
-let animes = [
-  {
-    mal_id: "",
-    image_url: "",
-    title: "",
-  },
-];
+let animes = [];
 
 let favorites = [];
 
@@ -32,7 +25,7 @@ const getApiData = () => {
 const getAnimes = (anime) => {
   let animeHtmlCode = "";
   animeHtmlCode += `<li class="list_animes js_listresults">`;
-  animeHtmlCode += `<img src="${anime.image_url}"  data-id="${anime.mal_id}" class="card__imgres js_addanimefav" alt="animes">`;
+  animeHtmlCode += `<img src="${anime.image_url}"  data-id="${anime.mal_id}" class="card__images js_addanimefav" alt="animes">`;
   animeHtmlCode += `<h2 class="title_anime">${anime.title}</h2></li>`;
   return animeHtmlCode;
 };
@@ -45,7 +38,7 @@ const paintAnimes = () => {
   listAnimesFav();
 };
 
-//Boton buscar animes (click boton):
+//Boton buscar animes (click boton Buscar):
 function handleClickSearch(event) {
   event.preventDefault();
   getApiData();
@@ -60,8 +53,6 @@ const listAnimesFav = () => {
 };
 
 const addToFavorites = (ev) => {
-  //console.log(ev.target.dataset.id);
-
   const clickedId = parseInt(ev.target.dataset.id);
   let foundAnime;
   for (const anime of animes) {
@@ -83,7 +74,7 @@ const addToFavorites = (ev) => {
 const getToFavorites = (fav) => {
   let animeFavHtmlCode = "";
   animeFavHtmlCode += `<li class="list_animesfav js_fav">`;
-  animeFavHtmlCode += `<img src="${fav.image_url}"  data-id="${fav.mal_id}" class="card__imgfav js_addanimefav" alt="animes">`;
+  animeFavHtmlCode += `<img src="${fav.image_url}"  data-id="${fav.mal_id}" class="card__imgfav js_anime" alt="animes">`;
   animeFavHtmlCode += `<h2 class="title_anime">${fav.title}</h2></li>`;
   animeFavHtmlCode += `<button class="delete js_deletefav">x</button>`;
   return animeFavHtmlCode;
@@ -98,17 +89,18 @@ const paintFavorites = () => {
 };
 
 //Boton "x" Favoritos:
-
-
-
-
-//Boton reset (se apaga los favoritos):
-function handleClickReset() {
-  listFav.innerHTML = "";
+function handleClickX() {
+  const buttonX = document.querySelectorAll(".js_deletefav");
+  for (const button of buttonX) buttonX.addEventListener("click", handleClickX);
 }
-handleClickReset();
+handleClickX();
 
-//Local Storage:
+//Boton reset (limpia favoritos, resultados y Local Storage):
+function handleClickReset() {
+  favorites = [];
+}
+
+//Guardar en local Storage:
 const setInLocalStorage = () => {
   const storageFav = JSON.stringify(favorites);
   localStorage.setItem("fav", storageFav);
@@ -117,7 +109,6 @@ const setInLocalStorage = () => {
 //Eventos:
 resetBtn.addEventListener("click", handleClickReset); // Boton reset
 buttonSearch.addEventListener("click", handleClickSearch); // Boton de buscar
-/*buttonX.addEventListener("click", handleClickX); //Boton "x" Favoritos*/
 
 //Start app:
 //getApiData();

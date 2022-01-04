@@ -26,7 +26,7 @@
 .title {
   text-shadow: 2px 2px 2px #fab133;
   color: #9a0005;
-  font-size: 34px;
+  font-size: 38px;
   text-transform: capitalize;
   letter-spacing: 1.4px;
   margin: 30px;
@@ -57,7 +57,7 @@
 
 .button {
   font-family: "Bangers", cursive;
-  font-size: 16px;
+  font-size: 18px;
   color: #9a0005;
   background-color: #fab133;
   width: 60px;
@@ -69,7 +69,7 @@
 
 .reset {
   font-family: "Bangers", cursive;
-  font-size: 16px;
+  font-size: 18px;
   color: #9a0005;
   background-color: #fab133;
   width: 60px;
@@ -89,7 +89,7 @@
 
 .fav {
   font-family: "Bangers", cursive;
-  font-size: 24px;
+  font-size: 28px;
   color: #fab133;
   text-shadow: 2px 2px 2px #9a0005;
   margin: 15px;
@@ -99,7 +99,7 @@
 
 .results {
   font-family: "Bangers", cursive;
-  font-size: 24px;
+  font-size: 28px;
   color: #fab133;
   text-shadow: 2px 2px 2px #9a0005;
   letter-spacing: 1.7px;
@@ -109,16 +109,16 @@
 
 .title_anime {
   font-family: "Anton", sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   text-align: justify;
   color: #fab133;
   text-shadow: 2px 2px 2px #9a0005;
   word-break: break-word;
 }
 
-.card__imgres {
+.card__images {
   width: 60%;
-  height: 100%;
+  height: 40%;
 }
 
 .list_animes {
@@ -141,6 +141,7 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 30px;
 }
 
@@ -148,6 +149,7 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 30px;
 }
 
@@ -167,7 +169,7 @@
 
 .card__imgfav {
   width: 60%;
-  height: 100%;
+  height: 40%;
   object-fit: contain;
   border: solid 4px #9a0005;
 }
