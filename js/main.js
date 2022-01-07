@@ -6,9 +6,23 @@ const resetBtn = document.querySelector(".js_reset");
 const listFav = document.querySelector(".js_fav");
 const buttonSearch = document.querySelector(".js_button");
 
+
+//una nueva rama - tiposerie / type
+// tarjeta Series = add un nuevo resultado que va a ser el type - check
+//array pre definido que va a tener los valores: Ova y especial - CHECK
+// Si el typo esta en este array: salga "Historia especial"  - check
+
+//desacivar que al hacer click a una imagen no se pone a favoritos (desactivar)
+//cuando haga click se me pinta en consola el titulo de la serie clicada.
+
+
+
 let animes = [];
 
 let favorites = [];
+
+let array = ["ova", "special"];
+
 
 // Get data from API:
 const getApiData = () => {
@@ -27,8 +41,17 @@ const getAnimes = (anime) => {
   animeHtmlCode += `<li class="list_animes js_listresults">`;
   animeHtmlCode += `<img src="${anime.image_url}"  data-id="${anime.mal_id}" class="card__images js_addanimefav" alt="animes">`;
   animeHtmlCode += `<h2 class="title_anime">${anime.title}</h2></li>`;
+  animeHtmlCode += `<li>Tipo de serie:${anime.type}</li>`;
+
+  if(anime.type.toLowerCase() === "ova" || anime.type.toLowerCase() === "special"){
+    animeHtmlCode += `<p>Historia special</p>`;
+  }
   return animeHtmlCode;
+  
 };
+
+
+
 const paintAnimes = () => {
   let animesCode = "";
   for (const anime of animes) {
@@ -42,13 +65,14 @@ const paintAnimes = () => {
 function handleClickSearch(event) {
   event.preventDefault();
   getApiData();
-}
+} 
 
 //Añadir imagenes de resultados a favoritos:
 const listAnimesFav = () => {
   const addAnimesFav = document.querySelectorAll(".js_addanimefav");
   for (const addAnimeFav of addAnimesFav) {
     addAnimeFav.addEventListener("click", addToFavorites);
+  
   }
 };
 
@@ -57,7 +81,9 @@ const addToFavorites = (ev) => {
   let foundAnime;
   for (const anime of animes) {
     if (anime.mal_id === clickedId) {
+      console.log(anime.title);
       foundAnime = anime;
+  
     }
   }
 
@@ -66,7 +92,7 @@ const addToFavorites = (ev) => {
     image_url: foundAnime.image_url,
     title: foundAnime.title,
   });
-  console.log(favorites);
+  
   paintFavorites();
   setInLocalStorage();
 };
@@ -84,7 +110,7 @@ const getToFavorites = (fav) => {
 const paintFavorites = () => {
   listFav.innerHTML = "";
   for (const fav of favorites) {
-    listFav.innerHTML += getToFavorites(fav);
+    listFav.innerHTML = "";
   }
 };
 
@@ -95,7 +121,7 @@ function handleClickX() {
 }
 handleClickX();
 
-//Boton reset (limpia favoritos, resultados y Local Storage):
+//Boton reset:
 function handleClickReset() {
   favorites = [];
 }
